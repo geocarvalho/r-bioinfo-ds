@@ -75,4 +75,85 @@ hand2 <- c("ace", "spades", "king", "spades", "queen", "spades", "jack",
 matrix(hand2, nrow=5, byrow=TRUE)
 matrix(hand2, ncol=2, byrow=TRUE)
 
-# Class
+# Class: according to the structure
+dim(die) <- c(2, 3)
+typeof(die)
+class(die)
+attributes(die)
+class("hello") # for objects without class, it returns the type
+class(5)
+
+# Dates and time
+now <- Sys.time()
+now
+typeof(now)
+class(now)
+unclass(now)
+mil <- 1000000
+mil
+class(mil) <- c("POSIXct", "POSIXt")
+
+# Factors
+genders <- factor(c("male", "female", "female", "male"))
+genders
+typeof(genders)
+attributes(genders)
+unclass(genders)
+as.character(genders)
+
+# Coercions: character <- numeric <- logical
+sum(c(T, F, F, T))
+as.character(1)
+as.logical(1)
+as.numeric(F)
+
+# Lists
+list1 <- list(100:130, "R", list(T, F))
+list1
+card <- list("ace", "hearts", "1")
+card
+
+# Data Frames: sequence of columns (each one have a type)
+df <- data.frame(face=c("ace", "two", "six"), suit=c("clubs", "clubs", "clubs"),
+                 value=c(1, 2, 3))
+df
+typeof(df)
+class(df)
+str(df) # string characters saved as factors
+
+df <- data.frame(face=c("ace", "two", "six"), suit=c("clubs", "clubs", "clubs"),
+                 value=c(1, 2, 3), stringsAsFactors=F)
+str(df) # not anymore
+
+deck <- data.frame(
+      face=c("king", "queen", "jack", "ten", "nine", "eight", "seven", "six",
+             "five", "four", "three", "two", "ace", "king", "queen", "jack", "ten",
+             "nine", "eight", "seven", "six", "five", "four", "three", "two", "ace",
+             "king", "queen", "jack", "ten", "nine", "eight", "seven", "six", "five",
+             "four", "three", "two", "ace", "king", "queen", "jack", "ten", "nine",
+             "eight", "seven", "six", "five", "four", "three", "two", "ace"), 
+      suit=c("spades", "spades", "spades", "spades", "spades", "spades",
+             "spades", "spades", "spades", "spades", "spades", "spades", "spades",
+             "clubs", "clubs", "clubs", "clubs", "clubs", "clubs", "clubs", "clubs",
+             "clubs", "clubs", "clubs", "clubs", "clubs", "diamonds", "diamonds",
+             "diamonds", "diamonds", "diamonds", "diamonds", "diamonds", "diamonds",
+             "diamonds", "diamonds", "diamonds", "diamonds", "diamonds", "hearts",
+             "hearts", "hearts", "hearts", "hearts", "hearts", "hearts", "hearts",
+             "hearts", "hearts", "hearts", "hearts", "hearts"), 
+      value=c(13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 13, 12, 11, 10, 9, 8,
+              7, 6, 5, 4, 3, 2, 1, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 13, 12, 11,
+              10, 9, 8, 7, 6, 5, 4, 3, 2, 1), 
+      stringsAsFactors=F)
+
+# Loading Data
+library(readr)
+deck <- read.csv("/home/george/Git-projects/r-bioinfo-ds/hands-on-with-r/desk.csv", 
+                  stringsAsFactors=F)
+#skip first rows and nrow to select rows
+head(deck)
+deck
+
+# Saving Data
+write.csv(deck, file="cards.csv", row.names=F)
+
+# R notation
