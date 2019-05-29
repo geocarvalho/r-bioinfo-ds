@@ -76,3 +76,12 @@ Você irá perceber que, em uma amostra bem distribuída, a média, mediana e mo
 * Com dados Ordinais usamos mediana ou moda;
 * Utilizamos a Média Aritmética em dados Intervalares, salvo aqueles que possuam *outliers*;
 * Desenhe um histograma e verifique se consegue desenhar uma linha parecida com a Normal. Se você tiver uma **distribuição normal**, o cálculo da média é um método razoável.
+
+## Aprendido:
+
+* Sobre a Média Aritmética, que soma todos os itens e divide pela sua quantidade total;
+* Escolher a MA sem levar em consideração o tipo de dado pode nos levar à conclusões errôneas;
+* A MA é sensível aos outliers;
+* Sobre a mediana, elemento que fica no meio de uma distribuição ordenada;
+* Sobre a moda, elemento que mais se repete na distribuição;
+* Usamos mediana ou moda para dados Ordinais.
