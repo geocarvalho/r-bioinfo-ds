@@ -18,6 +18,7 @@ Dada uma distribuição, como calcularemos o intervalo de confiança?
 
 Em um histograma, com uma curva Normal, a média se encontra no centro, que é a parte mais alta. E então, há os desvios padrão, que geralmente são três, tanto para a direita quanto para a esquerda. Na Estatística, o cálculo desses intervalos de confiança é feito com base nessa curva Normal, e probabilidade. Como assim? Levando-se em consideração que o eixo horizontal indica a altura da população brasileira, a pessoa que se encontra no extremo direito é alguém absurdamente alto, com cerca de 2,30m de altura. A partir desta curva, tentamos descobrir a probabilidade de termos um número onde está marcado 2,30m, conhecendo a frequência de cada uma das alturas das pessoas.
 
+[!hist2](https://s3.amazonaws.com/caelum-online-public/introducao-a-estatistica/amostra-de-probabilidade.png)
 
 Quando dizemos que o nível de confiança é de 95%, significa que há 95% de chances de termos um número nesse intervalo de 6 a 8. Quando indicamos 100% de nível de confiança, dizemos que a chance do número estar nessa curva é de 100%, considerando todo o contexto. Então, com 100% de confiança geralmente começa com uma altura de 30cm (extrema esquerda do gráfico), e acabamos em 2,30m (extrema direita).
 
