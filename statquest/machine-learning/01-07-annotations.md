@@ -184,8 +184,10 @@
 
 # 07 - ROC and AUC in R
 
-* All the annotation in R colab file
+* All the annotation in R colab file [right here](https://github.com/geocarvalho/r-bioinfo-ds/blob/master/statquest/machine-learning/07_ROC_and_AUC.ipynb)
 
 ---
 
 # 08 - Fitting a line to data, aka least squares, aka linear regression
+
+statquest/machine-learning/
