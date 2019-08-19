@@ -167,3 +167,71 @@ $the\ sum\ of\ the\ squared\ residuals\ +\ \lambda\ \times\ \(slope1²\ + slope2
 
 # 19 - Regularization - Lasso regression
 
+* For **Ridge Regression** the main idea is that by starting with a slightly worse fit, it provide better long term predictions.
+
+* The equation that **Ridge Regression** minimizes **the sum of the squared residuals +** $\lambda\ \times\ the\ slope²$, the **penalty** is given by the $\lambda\ \times\ the\ slope²$. For **Lasso Regression** the penalty is $\lambda\ \times\ |the\ slope|$ (a module instead of square)
+
+> $\lambda$ can be any value from 0 to +inf and is determined using **cross validation**, just like **Ridge Regression**;
+
+> The line resulted from **Lasso Regression** has a little bit of **bias** but less **variance** than **least squares**;
+
+> In the example, both make the prediction of **size** less sensitive to the tiny **training dataset**.
+
+* **Ridge** and **Lasso Regression** can be applied in the same contexts, like the different diets situation to predict size or in a logistic regression using weight to predict obesity, and complicated models that combine different types of data.
+
+* In the example, we've combined the data from first two examples, weight (continuous) and high fat diet (discrete)
+
+$size\ =\ y-intercept\ +\ slope\ \times\ weight\ +\ diet\ difference\ \times\ high\ fat\ diet$
+
+> Like the **ridge regression penalty**, the **lasso regression penalty** contains all of the estimated parameters excep for the y-intercept. When **ridge** and **lasso regression** shrink parameters, they don't have to shrink them all equally.
+
+$\lambda\ \times\ (|slope|\ +\ |diet\ difference|)$
+
+> When $\lambda\ =\ 0$, we would start with these **least squares** estimates for the **slope** and the offset for **diet difference**, but as we increase the value for $\lambda$, **ridge** and **lasso regression** may shrink **diet difference** a lot more than they shrink the **slope**
+
+* What happens when we increase the value for $\lamda$ in lasso?
+
+> As $\lambda$ increases in value, the slope gets smaller, until the slope = 0
+
+* The big difference between **ridge** and **lasso regression** is that **ridge regression** can only shrink the slope asymptotically close to 0 while **lasso regression** can shrink the slope all the way to 0.
+
+* When we apply **ridge regression* to a big equation, we find the minimal sum of the squared residuals plus the **ridge regression penalty** and the larger we make $\lambda$ the parameters *slope* and *diet difference* might shrink a little bit and others (astological offset, airspeed scalar) might shrink a lot, but they will never be equal to 0. In contrast, with **lasso regression** when we increase the value for $\lamda$ the parameters *slope* and *diet difference* will shrink a little and the others parameters will go all the way to 0 and teh terms go away (we're left with a way to predict **size** that only includes **weight** and **diet** and excludes all of the silly stuff).
+
+* Since **lasso regression** can exclude useless variables from equations, it's a little better than **ridge regression** at reducing the **variance** in models that contain a lot of useless variables. In contrast, **ridged regression** tends to do a little better when most variables are useful.
+
+## In summary
+
+* **Ridge regression** is very similar to **lasso regression**;
+
+* The superficial difference is that **ridge regression** squares the slope in penalty, while the **lasso regression** takes the absolute value;
+
+* The big difference is that **lasso regression** can exclude useless variables from equations, it makes the final equation simpler and easier to interpret.
+
+---
+
+20 - Regularization - Elastic-net regression
+
+## What do we do when we have a model that includes tons of more variables?
+
+* THe variables in those models might be useful or useless. we don't know in advance.
+
+* How do you choose if you should use Lasso or Ridge Regression? You use Elastic-net Regression.
+
+> Elastic-net regression starts with **least squares**, then it combines the Lasso regression penalty with the ridge regression penlaty.
+
+* **The Lasso regression penalty** and the **Ridge regression penalty** get thei own $\lambda$s. Use **cross validation** on different combinations of $\lambda_1$ and $\lambda_2$ to find the best values.
+
+> Then we get the original **least squares** parameter estimates (**the sum of the squared residuals**)
+
+1. When $\lambda_1\ >\ 0$ and $\lambda_2\ =\ 0$ then we get **lasso regression**;
+2. When $\lambda_1\ =\ 0$ and $\lambda_2\ >\ 0$ then we get **ridge regression**;
+3. When $\lambda_1\ >\ 0$ and $\lambda_2\ >\ 0$ then we get a hybrid of the two. 
+
+> The hybrid **elastic-net regression** is especially good at dealing with situations when there are correlations between parameters. This is because on it's own, **lasso regression** tends to pick just one of the correlated terms and eliminates the others, whereas **ridge regression** tends to shrink all of the parameters for the correlated variables together.
+
+> By combining **lasso** and **ridge regression**, **elastic-net regression** groups and shrinks the parameters associated with the correlated variables and leaves then in equation or removes them all at once.
+
+## In summary
+
+* **Elastic-Net Regression** combines the **lasso regression penalty** with the **ridge regression penalty**. It gets the best of both words, plus it does a better job dealing with correlated parameters.
+
