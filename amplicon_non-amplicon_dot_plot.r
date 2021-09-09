@@ -15,6 +15,7 @@ t <- 20
 #     geom_hline(yintercept = t)
 # }
 
-ggplot(cov_bed, aes(cov_bed$size, cov_bed$mean_coverage, color = cov_bed$position)) +
+ggplot(cov_bed, aes(size, mean_coverage, color = position)) +
+  ggtitle("Amplicon mean coverage x interval lenght") + xlab("Interval lenght") + ylab("Mean coverage") +
   geom_point() +
   facet_wrap(~cov_bed$sample)
