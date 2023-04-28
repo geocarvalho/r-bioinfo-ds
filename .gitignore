@@ -1,2 +1,4 @@
 .ipynb_*
 .Rhistory
+.Rproj.user
+.DS_Store
