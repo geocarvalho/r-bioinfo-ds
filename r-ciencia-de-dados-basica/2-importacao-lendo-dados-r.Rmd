@@ -1,0 +1,20 @@
+---
+title: "Importacao e exportacao de dados no R"
+output: html_document
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Bibliotecas
+```{r}
+library(tidyverse)
+```
+
+# Testando 
+```{r}
+path <- readr_example("mtcars.csv")
+mtcars_df <- read_csv(path)
+head(mtcars)
+```

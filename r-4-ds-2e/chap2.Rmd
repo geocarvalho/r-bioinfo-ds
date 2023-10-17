@@ -1,0 +1,126 @@
+---
+title: "2: Data Visualization - https://r4ds.hadley.nz/data-visualize"
+author: "George C"
+date: "2023-10-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# 2 Data visualization
+
+## Introduction
+
+### 2.1.1 Prerequisites
+
+```{r}
+# install.packages("tidyverse")
+library(tidyverse)
+library(ggplot2)
+library(scales)
+library(ggthemes)
+```
+
+## 2.2 First steps
+
+### 2.2.1 The penguins data frame
+
+
+```{r}
+penguins <- palmerpenguins::penguins
+glimpse(penguins)
+```
+- Para aprender mais sobre esses dados:
+```{r}
+?penguins
+```
+
+### 2.2.2 Ultimate goal
+### 2.2.3 Creating a ggplot
+```{r}
+# ggplot(data=penguins)
+
+# ggplot(
+#  data = penguins,
+#  mapping = aes(x=flipper_length_mm, y=body_mass_g))
+
+ggplot(
+  data = penguins,
+  mapping = aes(x=flipper_length_mm, y=body_mass_g)
+) +
+  geom_point()
+```
+### 2.2.4 Adding aesthetics and layers
+```{r}
+#ggplot(
+#  data=penguins,
+#  mapping=aes(x=flipper_length_mm, y=body_mass_g, color=species)
+#) + 
+#  geom_point()
+
+#ggplot(
+#  data=penguins,
+#  mapping=aes(x=flipper_length_mm, y=body_mass_g, color=species)
+#) +
+#  geom_point() +
+#  geom_smooth(method="lm")
+
+#ggplot(
+#  data=penguins,
+#  mapping=aes(x=flipper_length_mm, y=body_mass_g)
+#) +
+#  geom_point(mapping=aes(color=species)) +
+#  geom_smooth(method="lm")
+
+#ggplot(
+#  data=penguins,
+#  mapping=aes(x=flipper_length_mm, y=body_mass_g)
+#) +
+#  geom_point(mapping=aes(color=species, shape=species)) +
+#  geom_smooth(method="lm")
+
+ggplot(
+  data=penguins,
+  mapping=aes(x=flipper_length_mm, y=body_mass_g)
+) +
+  geom_point(aes(color=species, shape=species)) +
+  geom_smooth(method="lm") +
+  labs(
+    title="Body mass and flipper length",
+    subtitle="Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
+    x="Flipper length (mm)", y="Body mass (g)",
+    color="Species", shape="Species"
+  ) +
+  scale_colour_colorblind()
+```
+- Run this code in your head and predict what the output will look like. Then, run the code in R and check your predictions.
+```{r}
+ggplot(
+  data=penguins,
+  mapping=aes(x=flipper_length_mm, y=body_mass_g, color=island)
+) +
+  geom_point() +
+  geom_smooth(se=FALSE)
+```
+- Will these two graphs look different? Why/why not?
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+```
+```{r}
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
+```
+## ggplot2 calls
